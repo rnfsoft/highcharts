@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+  <div id="chart" data-url="{% url 'survivor_data' %}"></div> 
+  <script>
+    $.ajax({
+      url: $("#chart").attr("data-url"),
+      dataType: 'json',
+      success: function (data) {
+        Highcharts.chart("chart", data);
+      }
+    });
+  </script>
+{% endblock %}
